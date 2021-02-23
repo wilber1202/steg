@@ -16,14 +16,14 @@ steg_tools	= [("", "strings -a", "> result_strings.txt"),
 		   	   ("", "file_type", "> result_filetype.txt"),
 		   	   ("png", "pngcheck -vf", "> result_pngcheck.txt"),
 		   	   ("", "outguess -r", "result_outguess.txt"),
-		   	   ("", "foremost", ""),
 		   	   ("gif", "identify -format \"%T\"", "> result_identify.txt"),
 		   	   ("", "exiftool", "> result_exiftool.txt"),
-		   	   ("", "binwalk -e", ""),
 		   	   ("", "file_modify", ""),
 		   	   ("", "python /usr/bin/lsb.py extract", "result_lsb.txt 123456"),
 		   	   ("", "stepic -d -i", "> result_stepic.txt"),
-		   	   ("gif", "convert", "newimage.png")]
+		   	   ("gif", "convert", "newimage.png"),
+		   	   ("", "foremost", ""),
+		   	   ("", "binwalk -e", "")]
 
 for i in range(0, len(steg_tools)):
 	if ((0 != len(steg_tools[i][0])) and (False == filename.endswith(steg_tools[i][0]))):
