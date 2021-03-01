@@ -21,7 +21,9 @@ steg_tools	= [("", "strings -a", "> result_strings.txt"),
 		   	   ("", "file_modify", ""),
 		   	   ("", "python /usr/bin/lsb.py extract", "result_lsb.txt 123456"),
 		   	   ("", "stepic -d -i", "> result_stepic.txt"),
-		   	   ("gif", "convert", "newimage.png"),
+			   ("", "python /usr/bin/invert.py", ""),
+		   	   ("gif", "convert", "frame.png"),
+		   	   ("gif", "python /usr/bin/invert_frame.py", ""),
 		   	   ("", "foremost", ""),
 		   	   ("", "binwalk -e", "")]
 
