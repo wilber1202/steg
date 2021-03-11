@@ -98,15 +98,26 @@ int modify_bmp(unsigned char *f, int file_size) {
 
 int modify_png(unsigned char *f, int file_size) {
     unsigned char *p_height = NULL;
+    unsigned char newheight;
 
     if (file_size <= PNG_HEAD_SIZE) {
         printf("PNG length less than head size\r\n");
         return -1;
     }
 
-    p_height = f + PNG_WIDTH_OFFSET;
-    *p_height = 0x06;
-    
+    p_height    = f + PNG_WIDTH_OFFSET;
+    if (0 != *p_height) {
+        newheight   = *p_height * 4;   
+    } else {
+        newheight   = 0x02;
+    }
+
+    if (newheight < *p_height) {
+        newheight = 0xff;
+    }
+
+    *p_height   = newheight;
+
     return 0;
 }
 
