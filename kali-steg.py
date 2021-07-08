@@ -12,7 +12,7 @@ filename	= sys.argv[1]
 
 steg_tools	= [("", "strings -a", "> result_strings.txt"), 
 		   	   ("", "remove0x00", ""),
-		   	   ("", "zsteg", "> result_zsteg.txt"), 
+		   	   ("", "zsteg -a", "> result_zsteg.txt"), 
 		   	   ("", "file_type", "> result_filetype.txt"),
 		   	   ("png", "pngcheck -vf", "> result_pngcheck.txt"),
 		   	   ("", "outguess -r", "result_outguess.txt"),
