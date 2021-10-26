@@ -24,8 +24,13 @@ steg_tools	= [("", "strings -a", "> result_strings.txt"),
 			   ("", "python /usr/bin/invert.py", ""),
 		   	   ("gif", "convert", "frame.png"),
 		   	   ("gif", "python /usr/bin/invert_frame.py", ""),
+		   	   ("", "steghide extract -p 123456 -sf", ""),
+		   	   ("png", "python /usr/bin/apng_split.py", ""),
 		   	   ("", "foremost", ""),
-		   	   ("", "binwalk -e", "")]
+		   	   ("", "binwalk -Me", ""),
+		   	   ("", "what_steg -f", ""),
+		   	   ("", "python /usr/bin/recursion.py", "")]
+		   	   #("png", "python3 /usr/bin/brute_png_height.py", "")]
 
 for i in range(0, len(steg_tools)):
 	if ((0 != len(steg_tools[i][0])) and (False == filename.endswith(steg_tools[i][0]))):
@@ -37,3 +42,9 @@ for i in range(0, len(steg_tools)):
 	lines = result.stdout.readlines()
 	for line in lines:
 		print("%s" % line)
+
+#cmd = "python /usr/bin/invert.py right_height.png"
+#subprocess.Popen(cmd, shell = True, stdout = subprocess.PIPE, stderr = subprocess.STDOUT)
+
+#cmd = "python /usr/bin/lsb.py extract right_height.png result_right_height_lsb.txt 123456"
+#subprocess.Popen(cmd, shell = True, stdout = subprocess.PIPE, stderr = subprocess.STDOUT)
